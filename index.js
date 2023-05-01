@@ -1,6 +1,6 @@
 let CapsLockIsOn = false;
 let ShiftIsOn = false;
-let ru = false;
+let ru = localStorage.getItem('lan') === 'true' ? localStorage.getItem('lan') : false;
 
 
     const keys = [
@@ -78,6 +78,8 @@ let ru = false;
         }
         else if (key.textContent.toLowerCase() === 'ru' || key.textContent.toLowerCase() === 'en'){
             ru = !ru;
+            localStorage.setItem('lan', ru);
+
             keyboard(CapsLockIsOn,ShiftIsOn,ru);
         }
         else{
@@ -96,6 +98,8 @@ let ru = false;
                 textField.value += '    ';
             else if (key.textContent.toLowerCase() === 'enter')
                 textField.value += '\n';
+            else if (key.textContent.toLowerCase() === '<-')
+                textField.focus(textField.value.slice(0, -1));
             else
                 simulateKeyPress(key.textContent);
         }
@@ -119,6 +123,7 @@ let ru = false;
         }
         else if (key.textContent.toLowerCase() === 'ru' || key.textContent.toLowerCase() === 'en'){
             ru = !ru;
+            localStorage.setItem('lan', ru);
             keyboard(CapsLockIsOn,ShiftIsOn,ru);
         }
         else{
@@ -155,8 +160,11 @@ let ru = false;
 
 }
 
-keyboard(CapsLockIsOn,ShiftIsOn);
-  
+keyboard(CapsLockIsOn,ShiftIsOn,ru);
+
+
+
+
   // Simulate a key press on the virtual keyboard
   function simulateKeyPress(key) {
     textField.value += key;
