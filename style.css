@@ -47,6 +47,6 @@ textarea{
   background-color: #e6e6e6;
 }
 
-.keyboard-key:active {
+.keyboard-key.active {
   background-color: #d9d9d9;
 }

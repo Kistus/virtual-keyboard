@@ -30,15 +30,21 @@ const keys = [
         key.classList.add('active');
         simulateKeyPress(key.textContent);
       });
+
+        key.addEventListener('mouseup', () => {
+            key.classList.remove('active');
+        });
   
       // Add event listener for when the corresponding physical key is pressed
       document.addEventListener('keydown', (event) => {
         if (event.key === key.textContent) {
           key.classList.add('active');
+          simulateKeyPress(key.textContent);
+          
         }
       });
   
-      // Add event listener for when the corresponding physical key is released
+    //   Add event listener for when the corresponding physical key is released
       document.addEventListener('keyup', (event) => {
         if (event.key === key.textContent) {
           key.classList.remove('active');
