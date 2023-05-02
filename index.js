@@ -59,6 +59,8 @@ let ru = localStorage.getItem('lan') === 'true' ? localStorage.getItem('lan') : 
     for (let j = 0; j < mykeys[i].length; j++) {
       const key = document.createElement('div');
       key.classList.add('keyboard-key');
+      if(mykeys[i][j] === 'Backspace' || mykeys[i][j] === 'Enter' || mykeys[i][j] === 'Shift' || mykeys[i][j] === 'Ctrl' || mykeys[i][j] === 'Alt' || mykeys[i][j] === 'Tab' || mykeys[i][j] === 'CapsLock' || mykeys[i][j] === 'Space' || mykeys[i][j] === '<-' || mykeys[i][j] === '->' || mykeys[i][j] === '\\|/')
+        key.classList.add('keyboard-key-wide');
       if(CapsLock || Shift)
         key.textContent = mykeys[i][j].toUpperCase();
     else
